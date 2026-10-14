@@ -1,22 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BakeryMenu } from "@/components/bakery-menu";
-import { validateMenuSearch } from "@/lib/menu-data";
-
+import { BusinessPage } from "@/components/business-page";
 export const Route = createFileRoute("/")({
-  validateSearch: validateMenuSearch,
-  head: () => ({ meta: [
-    { title: "Santo Antônio Pães & Pizzas | Pães, pizzas & cardápio artesanal" },
-    { name: "description", content: "Explore o cardápio da Santo Antônio Pães & Pizzas: pizzas, pães artesanais, bolos, pães de queijo e bebidas. Sabores para todos os momentos." },
-    { property: "og:title", content: "Santo Antônio Pães & Pizzas | Pães, pizzas & cardápio artesanal" },
-    { property: "og:description", content: "Pizzas, pães artesanais, receitas que acolhem e pequenos prazeres para todos os dias." },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ] }),
-  component: Index,
+ head: () => ({meta:[
+ {title:"Pit Stop | Oficina automotiva"},
+ {name:"description",content:"Manutenção preventiva e diagnóstico para você seguir com tranquilidade."},
+ {property:"og:title",content:"Pit Stop | Oficina automotiva"},
+ {property:"og:description",content:"Manutenção preventiva e diagnóstico para você seguir com tranquilidade."},
+ {property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}
+ ]}), component:BusinessPage
 });
-
-function Index() {
-  const { style } = Route.useSearch();
-  const navigate = Route.useNavigate();
-  return <BakeryMenu page="bakery" style={style} onStyleChange={(value) => navigate({ search: { style: value }, resetScroll: false })} />;
-}
